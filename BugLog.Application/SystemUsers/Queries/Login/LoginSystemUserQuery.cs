@@ -27,6 +27,17 @@ namespace BugLog.Application.SystemUsers.Queries.Login
                 if(entity == null) {
                     throw new EntityNotFoundException(nameof(SystemUser), request.EmailAddress);
                 }
+                if(!entity.IsActive) {
+                    throw new AuthException(nameof(SystemUser), "User account is deactivated. Please contact the system administrator.");
+                }
+                
+                if(!entity.IsLocked) {
+                    throw new AuthException(nameof(SystemUser), "User account is locked. Please contact the system administrator.");
+                }
+
+                if(!entity.IsVerified) {
+                    throw new AuthException(nameof(SystemUser), "User account is not verified. Please verify your user account or contact the system administrator.");
+                }
 
                 if(!_passwordService.VerifyPasswordHash(request.Password, entity.PasswordHash, entity.PasswordSalt)) {
                     throw new BadRequestException("Email address or password is incorrect.");

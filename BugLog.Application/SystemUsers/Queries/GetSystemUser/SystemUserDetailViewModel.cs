@@ -1,6 +1,6 @@
 using System;
 
-namespace BugLog.Application.AppUsers.Queries
+namespace BugLog.Application.SystemUsers.Queries
 {
     public class SystemUserDetailViewModel
     {

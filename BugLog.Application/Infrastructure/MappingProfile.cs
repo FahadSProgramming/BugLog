@@ -5,6 +5,7 @@ using BugLog.Application.Currencies.Queries;
 using BugLog.Application.Customers.Queries;
 using BugLog.Application.PriceLists.Queries;
 using BugLog.Application.Products.Queries;
+using BugLog.Application.SystemUsers.Queries;
 using BugLog.Application.TaxProfiles.Queries;
 using BugLog.Domain.Entities;
 
@@ -22,6 +23,7 @@ namespace BugLog.Application.Cases.Queries
             CreateMap<PriceList, PriceListDetailViewModel>();
             CreateMap<Product, ProductDetailViewModel>();
             CreateMap<TaxProfile, TaxProfileDetailViewModel>();
+            CreateMap<SystemUser, SystemUserDetailViewModel>();
             //  .ForMember(d => d.Status.GetHashCode(), o => o.MapFrom(s => s.Status))
             //  .ForMember(d => d.Priority.GetHashCode(), o => o.MapFrom(s => s.Priority));
         }

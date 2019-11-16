@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using BugLog.Application.Contacts.Queries;
 using BugLog.Application.Customers.Queries;
+using BugLog.Application.Infrastructure;
 
 namespace BugLog.Application.Countries.Queries
 {
-    public class CountryDetailViewModel
+    public class CountryDetailViewModel : ViewModelBase
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
