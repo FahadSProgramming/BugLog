@@ -28,6 +28,7 @@ using Microsoft.IdentityModel.Tokens;
 using BugLog.Services.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using BugLog.WebApi.Infrastructure;
 
 namespace BugLog.WebApi
 {
@@ -108,7 +109,7 @@ namespace BugLog.WebApi
             }
 
             //app.UseHttpsRedirection();
-
+            //app.UseExceptionHandling();
             app.UseRouting();
             app.UseAuthentication();
 

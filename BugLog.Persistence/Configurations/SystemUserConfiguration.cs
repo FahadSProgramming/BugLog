@@ -30,7 +30,7 @@ namespace BugLog.Persistence.Configurations
             builder.HasMany(p => p.UpdateActions)
             .WithOne(p => p.ModifiedBy)
             .HasForeignKey(p => p.ModifiedById)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

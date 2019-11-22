@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BugLog.Application.SystemUsers.Commands
 {
-    public class UpdateUserCommand : IRequest
+    public class UpdateSystemUserCommand : IRequest
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
@@ -20,12 +20,12 @@ namespace BugLog.Application.SystemUsers.Commands
         public bool? IsLocked { get; set; }
         public Guid? UserManagerId { get; set; }
 
-        public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit> {
+        public class UpdateSystemUserCommandHandler : IRequestHandler<UpdateSystemUserCommand, Unit> {
             private readonly IBugLogDbContext _context;
-            public UpdateUserCommandHandler(IBugLogDbContext context) {
+            public UpdateSystemUserCommandHandler(IBugLogDbContext context) {
                 _context = context;
             }
-            public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken) {
+            public async Task<Unit> Handle(UpdateSystemUserCommand request, CancellationToken cancellationToken) {
                 var entity = await _context.SystemUsers.FindAsync(request.Id);
 
                 if(entity == null) {
