@@ -109,7 +109,10 @@ namespace BugLog.WebApi
             }
 
             //app.UseHttpsRedirection();
-            //app.UseExceptionHandling();
+
+            // Inject custom exception handling middlewae
+            app.UseExceptionHandling();
+
             app.UseRouting();
             app.UseAuthentication();
 
