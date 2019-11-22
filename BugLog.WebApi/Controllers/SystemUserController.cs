@@ -1,11 +1,9 @@
-using BugLog.Application.Exceptions;
 using BugLog.Application.SystemUsers.Commands;
 using BugLog.Application.SystemUsers.Commands.Register;
 using BugLog.Application.SystemUsers.Queries;
 using BugLog.Application.SystemUsers.Queries.Login;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,7 +26,7 @@ namespace BugLog.WebApi.Controllers
         [HttpGet]
         [Route("Login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login([FromBody] LoginSystemUserQuery request, CancellationToken cancellationToken = default) {
             var response = await Mediator.Send(request, cancellationToken);
@@ -46,6 +44,7 @@ namespace BugLog.WebApi.Controllers
 
         [HttpGet]
         [Route("GetAll")]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetSystemUserCollection(CancellationToken cancellationToken = default) {
             var response = await Mediator.Send(new GetSystemUserListQuery(), cancellationToken);
             return Ok(response);
